@@ -1,0 +1,13 @@
+<h1>Bienvenido {{ user.name }}</h1>
+
+<p>Gracias por registrarse en el sitio.</p>
+<p>Su correo es {{ user.email}}.</p>
+
+<br>
+<br>
+
+<ul *ngFor="let post of posts">
+    <li>
+        {{ post.title }}
+    </li>
+</ul>
