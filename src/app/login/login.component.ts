@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginResponse } from '../models/loginResponse';
 import { BackEndService } from '../services/back-end.service';
 
 @Component({
@@ -7,19 +9,29 @@ import { BackEndService } from '../services/back-end.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
+  errosDisplay: boolean= true;
 
-  constructor(private backEnd: BackEndService) { }
+    constructor(private backEnd: BackEndService, 
+      private routing: Router) { }
 
   ngOnInit(): void {
   }
 
   login(email:HTMLInputElement, password:HTMLInputElement) {
-    console.log(`Email: ${email.value}, Password: ${password.value}`);
-    //console.log(typeof(password.value));
-
-    this.backEnd.login(email.value, password.value).subscribe(data =>{
-      console.log(data);
-    });
+    this.backEnd.login(email.value, password.value).subscribe(
+      res=>{
+        if(res.Status === "Session Started"){
+          this.routing.navigate(['']);
+        }
+        else{
+          this.errosDisplay = false;
+        }
+      },
+      err=>{
+        console.log(err);
+      }
+    );
 
     return false;
   }
