@@ -22,7 +22,9 @@ export class LoginComponent implements OnInit {
     this.backEnd.login(email.value, password.value).subscribe(
       res=>{
         if(res.Status === "Session Started"){
-          this.routing.navigate(['']);
+          localStorage.setItem('user', email.value);
+          localStorage.setItem('token', res.Token);
+          this.routing.navigate(['Profile']);
         }
         else{
           this.errosDisplay = false;

@@ -1,5 +1,6 @@
 #side-bar-column{
   height: 100vh;
+  position: fixed;
 }
 .container-fluid{
   padding-left: 0%;

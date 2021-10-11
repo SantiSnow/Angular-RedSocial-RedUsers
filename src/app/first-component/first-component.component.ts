@@ -14,14 +14,7 @@ export class FirstComponentComponent implements OnInit {
   posts:any = [];
 
   constructor(backEnd: BackEndService) { 
-    backEnd.getPersonas().subscribe(data =>{
-      this.user= data;
-    });
-
-    backEnd.getPosts().subscribe(data =>{
-      this.posts= data;
-      console.log(data);
-    });
+    
   }
 
   ngOnInit(): void {

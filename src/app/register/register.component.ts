@@ -27,7 +27,9 @@ export class RegisterComponent implements OnInit {
           this.emailExistenteDisplay = false;
         }
         else if (res.Status === "User registered") {
-          this.router.navigate(['']);
+          localStorage.setItem('user', email.value);
+          localStorage.setItem('token', res.Token);
+          this.router.navigate(['Profile']);
         }
       },
       err=>{

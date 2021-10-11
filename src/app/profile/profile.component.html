@@ -1,1 +1,68 @@
-<p>profile works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" id="side-bar-column">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <span class="fs-4">{{ user.name }}</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">
+                            Mis posteos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            Mis amigos
+                        </a>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-danger" (click)="logout()">
+                    Cerrar Sesión
+                </a>
+                <hr>
+                <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
+                    <strong>{{ user.email }}</strong>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h1 class="">Perfil</h1>
+            <br>
+            <h3>Bienvenido. Desde aquí puede crear nuevos posteos o ver los actuales.</h3>
+            <br>
+            <br>
+            <form action="">
+
+                <input type="text" class="form-control" placeholder="Ingrese titulo del post" #title />
+                <br>
+                <input type="text" class="form-control" placeholder="Ingrese descripcion del post" #description />
+                <br>
+
+                <button class="btn btn-primary" (click)="createPost(title, description)">Crear</button>
+                
+            </form>
+            <br>
+            <br>
+            <h3>Mis posteos:</h3>
+            <div class="row">
+                <div class="col-md-4" *ngFor="let i of posts">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="{{ i.image }}" style="width: 50%"  alt="">
+                            <h5 class="card-title">{{ i.title }}</h5>
+                            <p class="card-text">{{ i.description }}</p>
+                            <p><small>Likes: {{ i.likes }}</small></p>
+                            <a href="" class="btn btn-success">Me gusta!</a> 
+                            <form style="display: inline;">
+                                <input type="hidden" value="{{ i.id }}" #id> 
+                                <button href="" (click)="deletePost(id)" class="btn btn-danger">Borrar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
