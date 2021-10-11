@@ -1,0 +1,92 @@
+#errors {
+    color: #ac0404;
+}
+
+#emailExistente{
+    color: #ac0404;
+}
+
+html, body {
+    height: 100%;
+}
+
+#body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #0b0e24;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    border-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-radius: 0;
+}
+
+.form-control{
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    border-radius: 0;
+}
+
+.form-control {
+    background-color: #0b0e24;
+    color: white;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #0b0e24 inset !important;
+    box-shadow: 0 0 0 30px #0b0e24 inset !important;
+}
+
+label {
+    color: white;
+}
+
+.fw-normal {
+    color: white;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}

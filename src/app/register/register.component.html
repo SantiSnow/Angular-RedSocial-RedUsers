@@ -1,17 +1,32 @@
-<div class="form-group">
-    <form>
-        <label for="name">Nombre:</label>
-        <input name="name" type="text" class="form-control" placeholder="Ingrese nombre" #name />
+<div id="body" class="text-center">
+    <main class="form-signin">
+      <form>
+        <img class="mb-4" src="assets/imgs/logo-blanco.png" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">Registrarse con sus datos</h1>
+  
+        <div class="form-floating">
+            <input type="text" name="name" class="form-control" id="floatingName" placeholder="Nombre" #name />
+            <label for="floatingInput">Nombre completo</label>
+        </div>
+
+        <div class="form-floating">
+          <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" #email />
+          <label for="floatingInput">Email/usuario</label>
+        </div>
+        
+        <div class="form-floating">
+          <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" #password />
+          <label for="floatingPassword">Password</label>
+        </div>
+  
+        <div id="errors" [hidden]="errorsDisplay">Todos los campos son requeridos.</div>
+        <div id="emailExistente" [hidden]="emailExistenteDisplay">El email ingresado ya existe en el sistema.</div>
         <br />
-    
-        <label for="email">Email:</label>
-        <input name="email" type="email" class="form-control" placeholder="Ingrese email" #email />
-        <br />
-    
-        <label for="password">Password:</label>
-        <input name="password" type="password" class="form-control" placeholder="Ingrese contraseña" #password />
-        <br />
-    
-        <button class="btn btn-outline-success" (click)="register(name, email, password)">Register</button>
-    </form> 
-</div>
+  
+        <button class="w-100 btn btn-lg btn-primary"  (click)="register(name, email, password)">Register</button>
+        <p class="mt-5 mb-3 text-muted"></p>
+  
+        <a class="link" routerLink="/Login">Ya tenes tu cuenta?</a>
+      </form>
+    </main>
+  </div>

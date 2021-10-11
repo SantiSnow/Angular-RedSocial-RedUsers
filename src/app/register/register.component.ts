@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BackEndService } from '../services/back-end.service';
 
 @Component({
@@ -8,17 +9,32 @@ import { BackEndService } from '../services/back-end.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private backEnd:BackEndService) { }
+  errorsDisplay:boolean = true;
+  emailExistenteDisplay:boolean= true;
+
+  constructor(private backEnd:BackEndService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
   register(name:HTMLInputElement, email:HTMLInputElement, password:HTMLInputElement){
-    console.log(`Nombre: ${name.value}, Email: ${email.value}, Password: ${password.value}`);
+    this.errorsDisplay = true;
+    this.emailExistenteDisplay = true;
 
-    this.backEnd.register(name.value, email.value, password.value).subscribe(data =>{
-      console.log(data);
-    });
+    this.backEnd.register(name.value, email.value, password.value).subscribe(
+      res=>{
+        if(res.Status === "User already exists"){
+          this.emailExistenteDisplay = false;
+        }
+        else if (res.Status === "User registered") {
+          this.router.navigate(['']);
+        }
+      },
+      err=>{
+        console.log(err);
+        this.errorsDisplay = false;
+      }
+    );
 
     return false;
   }

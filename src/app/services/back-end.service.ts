@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoginResponse } from '../models/loginResponse';
+import { RegisterResponse } from '../models/registerResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,6 @@ export class BackEndService {
 
   register(name:string, email:string, password:string)
   {
-    return this.httpClient.post(this.registerUrl, {name: name, email: email, password: password});
+    return this.httpClient.post<RegisterResponse>(this.registerUrl, {name: name, email: email, password: password});
   }
 }
